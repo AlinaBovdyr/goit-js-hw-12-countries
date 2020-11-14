@@ -1,0 +1,21 @@
+{{!-- название, столица, население, языки и флаг --}}
+{{#each this}}
+<div class="card">
+    <h2 class="card-title">{{name}}</h2>
+    <div class="card-body">
+        <div class="card-info">
+            <p class="card-text"><b>Capital:</b> {{capital}}</p>
+            <p class="card-text"><b>Population:</b> {{population}}</p>
+            <p class="card-text"><b>Languages:</b></p>
+            <ul class="list-group">
+                {{#each languages}}
+                <li class="list-group-item">{{name}}</li>
+                {{/each}}
+            </ul>
+        </div>
+        <div class="card-image">
+            <img src="{{flag}}" alt="{{name}}" class="card-flag">
+        </div>
+    </div>
+</div>
+{{/each}}

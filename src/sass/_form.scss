@@ -1,0 +1,46 @@
+.form {
+  width: 30%;
+  margin: 30px auto;
+
+  &-field {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    line-height: 1.14;
+    letter-spacing: 0.01em;
+  }
+}
+
+.form-input {
+  padding: 12px 16px 12px 42px;
+
+  border: 1px solid;
+  border-radius: 4px;
+  border-color: rgba(33, 33, 33, 0.2);
+
+  transition: borger-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+
+  .form-field:focus-within & {
+    border-color: #2196f3;
+    outline: none;
+  }
+}
+
+.form-label {
+  position: absolute;
+  top: 50%;
+  transform: translate(42px, -50%);
+
+  color: #757575;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  .form-field:focus-within &,
+  .form-input:not(:placeholder-shown) + & {
+    transform: translate(16px, -40px);
+    color: #2196f3;
+  }
+}
