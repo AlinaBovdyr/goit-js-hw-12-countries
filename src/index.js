@@ -15,8 +15,7 @@ refs.searchForm.addEventListener('input', debounce(onSearch, 500));
 function onSearch(e) {
     const searchQuery = e.target.value;
     if (searchQuery.trim() === '') {
-        refs.searchList.innerHTML = '';
-        refs.cardContainer.innerHTML = '';
+        clearInterface();
     }
     
     API.fetchCountries(searchQuery)
@@ -28,8 +27,7 @@ function onSearch(e) {
                 refs.cardContainer.innerHTML = '';
                 return refs.searchList.innerHTML = createCountryListItemsMarkup(data);
             } else if (data.length > 10) {
-                refs.searchList.innerHTML = '';
-                refs.cardContainer.innerHTML = '';
+                clearInterface();
                 onFetchAlert();
             }
                 onFetchError();
@@ -48,6 +46,8 @@ function createCountryListItemsMarkup(items) {
 }
 
 function onFetchError() {
+    clearInterface();
+
     return error({
         text: "An unexpected country name. Try to enter a different value"
     });
@@ -58,4 +58,9 @@ function onFetchAlert() {
         text: "Too many matches found. Please enter a more specific query!",
         type: 'info'
     });
+}
+
+function clearInterface() {
+    refs.cardContainer.innerHTML = '';
+    refs.searchList.innerHTML = '';
 }
