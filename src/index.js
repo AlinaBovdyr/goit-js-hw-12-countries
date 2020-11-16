@@ -7,8 +7,11 @@ import './sass/styles.scss';
 import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
 
-const debounce = require('lodash.debounce');
 const refs = getRefs();
+const debounce = require('lodash.debounce');
+const { defaults } = require('@pnotify/core');
+
+defaults.delay = '1500';
 
 refs.searchForm.addEventListener('input', debounce(onSearch, 500));
 
