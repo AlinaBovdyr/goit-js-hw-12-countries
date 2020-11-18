@@ -32,8 +32,9 @@ function onSearch(e) {
             } else if (data.length > 10) {
                 clearInterface();
                 onFetchAlert();
-            }
+            } else {
                 onFetchError();
+            } 
         })
         .catch(onFetchError);
 }
